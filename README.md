@@ -1,6 +1,6 @@
-# Student Management API
+# Student Management REST API
 
-This is a simple API to get, save, and delete student records. The project highlights the basics of building an API using the Spring Framework in Java and uses PostgreSQL as the database.
+This is a simple REST API to get, save, and delete student records. The project highlights the basics of building a REST API using the Spring Framework in Java and uses PostgreSQL as the database.
 
 ## Features
 - Retrieve student details
@@ -16,9 +16,7 @@ This is a simple API to get, save, and delete student records. The project highl
 ## API Endpoints
 | Method | Endpoint         | Description          |
 |--------|----------------|----------------------|
-| GET    | `/api/students`     | Retrieve all students |
-| GET    | `/api/students/{id}`     | Retrieve a student by ID |
-| POST   | `/api/students`     | Save a new student   |
+| GET    | `/api/students`      | Retrieve all students |
+| GET    | `/api/students/{id}` | Retrieve a student by ID |
+| POST   | `/api/students`      | Save a new student   |
 | DELETE | `/api/students/{id}` | Delete a student by ID |
-
-
