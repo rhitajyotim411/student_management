@@ -1,4 +1,4 @@
-package com.marionette.student_management.model;
+package com.demo.student_management.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

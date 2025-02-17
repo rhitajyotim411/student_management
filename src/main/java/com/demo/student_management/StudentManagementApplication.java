@@ -1,4 +1,4 @@
-package com.marionette.student_management;
+package com.demo.student_management;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

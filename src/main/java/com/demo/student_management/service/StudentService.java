@@ -1,7 +1,7 @@
-package com.marionette.student_management.service;
+package com.demo.student_management.service;
 
-import com.marionette.student_management.model.Student;
-import com.marionette.student_management.repository.StudentRepository;
+import com.demo.student_management.model.Student;
+import com.demo.student_management.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

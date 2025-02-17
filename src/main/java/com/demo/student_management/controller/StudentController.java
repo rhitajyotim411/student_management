@@ -1,7 +1,7 @@
-package com.marionette.student_management.controller;
+package com.demo.student_management.controller;
 
-import com.marionette.student_management.model.Student;
-import com.marionette.student_management.service.StudentService;
+import com.demo.student_management.model.Student;
+import com.demo.student_management.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
