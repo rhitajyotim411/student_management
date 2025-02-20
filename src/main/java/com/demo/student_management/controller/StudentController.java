@@ -3,6 +3,7 @@ package com.demo.student_management.controller;
 import com.demo.student_management.model.Student;
 import com.demo.student_management.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,21 +15,37 @@ public class StudentController {
 
     @GetMapping
     public ResponseEntity<String> getAllStudents() {
-        return studentService.getAllStudents();
+        try {
+            return studentService.getAllStudents();
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping
     public ResponseEntity<String> saveStudent(@RequestBody Student student) {
-        return studentService.saveStudent(student);
+        try {
+            return studentService.saveStudent(student);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<String> getStudentById(@PathVariable Long id) {
-        return studentService.getStudentById(id);
+        try {
+            return studentService.getStudentById(id);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteStudentById(@PathVariable Long id) {
-        return studentService.deleteStudentById(id);
+        try {
+            return studentService.deleteStudentById(id);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
