@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -22,7 +23,9 @@ public class StudentService {
         if (l.size() < 1)
             mssg = "No student registered";
         else
-            mssg = l.toString();
+            mssg = l.stream()
+                    .map(Object::toString)
+                    .collect(Collectors.joining("\n"));
 
         return new ResponseEntity<>(mssg, HttpStatus.OK);
     }
