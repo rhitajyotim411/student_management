@@ -14,7 +14,7 @@ public class StudentController {
     StudentService studentService;
 
     @GetMapping
-    public ResponseEntity<String> getAllStudents() {
+    public ResponseEntity<?> getAllStudents() {
         try {
             return studentService.getAllStudents();
         } catch (Exception e) {
@@ -22,17 +22,8 @@ public class StudentController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<String> saveStudent(@RequestBody Student student) {
-        try {
-            return studentService.saveStudent(student);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping("/{id}")
-    public ResponseEntity<String> getStudentById(@PathVariable Long id) {
+    public ResponseEntity<?> getStudentById(@PathVariable Long id) {
         try {
             return studentService.getStudentById(id);
         } catch (Exception e) {
@@ -40,8 +31,17 @@ public class StudentController {
         }
     }
 
+    @PostMapping
+    public ResponseEntity<?> saveStudent(@RequestBody Student student) {
+        try {
+            return studentService.saveStudent(student);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PutMapping
-    public ResponseEntity<String> updateStudent(@RequestBody Student student) {
+    public ResponseEntity<?> updateStudent(@RequestBody Student student) {
         try {
             return studentService.updateStudent(student);
         } catch (Exception e) {
@@ -50,7 +50,7 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteStudentById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteStudentById(@PathVariable Long id) {
         try {
             return studentService.deleteStudentById(id);
         } catch (Exception e) {

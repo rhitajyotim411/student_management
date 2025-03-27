@@ -8,43 +8,41 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public ResponseEntity<String> getAllStudents() {
+    // get all students
+    public ResponseEntity<?> getAllStudents() {
         List<Student> l = studentRepository.findAll();
-        String mssg;
 
         if (l.size() < 1)
-            mssg = "No student registered";
+            return new ResponseEntity<>("No student registered", HttpStatus.OK);
         else
-            mssg = l.stream()
-                    .map(Object::toString)
-                    .collect(Collectors.joining("\n"));
-
-        return new ResponseEntity<>(mssg, HttpStatus.OK);
+            return new ResponseEntity<>(l, HttpStatus.OK);
     }
 
-    public ResponseEntity<String> saveStudent(Student student) {
-        studentRepository.save(student);
-        return new ResponseEntity<>("Student Registered", HttpStatus.OK);
-    }
-
-    public ResponseEntity<String> getStudentById(Long id) {
+    // get student by id
+    public ResponseEntity<?> getStudentById(Long id) {
         Student s = studentRepository.findById(id).orElse(null);
 
         if (s == null)
             return new ResponseEntity<>("No such student ID exists",
                     HttpStatus.BAD_REQUEST);
 
-        return new ResponseEntity<>(s.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
-    public ResponseEntity<String> updateStudent(Student student) {
+    // save student
+    public ResponseEntity<?> saveStudent(Student student) {
+        studentRepository.save(student);
+        return new ResponseEntity<>("Student Registered", HttpStatus.OK);
+    }
+
+    // update student
+    public ResponseEntity<?> updateStudent(Student student) {
         Long id = student.getId();
         Student s = studentRepository.findById(id).orElse(null);
 
@@ -56,7 +54,8 @@ public class StudentService {
         return new ResponseEntity<>("Student updated", HttpStatus.OK);
     }
 
-    public ResponseEntity<String> deleteStudentById(Long id) {
+    // delete student by id
+    public ResponseEntity<?> deleteStudentById(Long id) {
         Student s = studentRepository.findById(id).orElse(null);
 
         if (s == null)
