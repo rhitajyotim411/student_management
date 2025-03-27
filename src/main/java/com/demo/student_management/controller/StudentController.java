@@ -2,16 +2,18 @@ package com.demo.student_management.controller;
 
 import com.demo.student_management.model.Student;
 import com.demo.student_management.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.AllArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/students")
 public class StudentController {
-    @Autowired
-    StudentService studentService;
+    private StudentService studentService;
 
     @GetMapping
     public ResponseEntity<?> getAllStudents() {

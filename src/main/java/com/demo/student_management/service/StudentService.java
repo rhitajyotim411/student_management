@@ -2,7 +2,9 @@ package com.demo.student_management.service;
 
 import com.demo.student_management.model.Student;
 import com.demo.student_management.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.AllArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,8 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class StudentService {
-    @Autowired
     private StudentRepository studentRepository;
 
     // get all students
