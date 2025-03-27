@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
-
     @Autowired
     private StudentRepository studentRepository;
 
@@ -43,6 +42,18 @@ public class StudentService {
                     HttpStatus.BAD_REQUEST);
 
         return new ResponseEntity<>(s.toString(), HttpStatus.OK);
+    }
+
+    public ResponseEntity<String> updateStudent(Student student) {
+        Long id = student.getId();
+        Student s = studentRepository.findById(id).orElse(null);
+
+        if (s == null)
+            return new ResponseEntity<>("No such student exists",
+                    HttpStatus.BAD_REQUEST);
+
+        studentRepository.save(student);
+        return new ResponseEntity<>("Student updated", HttpStatus.OK);
     }
 
     public ResponseEntity<String> deleteStudentById(Long id) {

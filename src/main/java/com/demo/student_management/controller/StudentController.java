@@ -40,6 +40,15 @@ public class StudentController {
         }
     }
 
+    @PutMapping
+    public ResponseEntity<String> updateStudent(@RequestBody Student student) {
+        try {
+            return studentService.updateStudent(student);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteStudentById(@PathVariable Long id) {
         try {
